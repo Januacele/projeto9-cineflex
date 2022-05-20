@@ -3,7 +3,7 @@ import axios from 'axios';
 import LoadingGif from './Assets/loading.gif';
 import '../src/stilopageone.css';
 import ContainerHeader from './ContainerHeader';
-import styled from 'styled-components';
+
 
 export default function ListarFilmes() {
     const [movies, setMovies] = useState(false);
@@ -18,18 +18,17 @@ export default function ListarFilmes() {
 
     if (movies) {
         return (
-            <>
+            < section className='Escolher-Filme'>
                 <ContainerHeader />
-                <Content>
-                    <PosterBack>
-                        <PosterFilm>
-                            {movies.map((movie, index) =>
-                                <img index={index} src={movie.posterURL} alt={'movie'} />
-                            )}
-                        </PosterFilm>
-                    </PosterBack>
-                </Content>
-            </>
+                <div className='Titulo'> <h1> Selecione o filme </h1> </div>
+                <div className='Container-Filmes'>
+                    {movies.map((movie, index) =>
+                        <div className='Catalogo' key={index}>
+                            <img src={movie.posterURL} key={index} alt={'movie'} />
+                        </div>
+                    )}
+                </div>
+            </section>
         );
 
     } else {
@@ -38,27 +37,5 @@ export default function ListarFilmes() {
 }
 
 
-const Content = styled.div`
-    width: 375px;
-    max-width: 100%;
-    background-color: #FFFFFF;
-`
 
-const PosterBack = styled.div`
-    position: absolute;
-    width: 145px;
-    height: 209px;
-    left: 30px;
-    top: 169px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
-    border-radius: 3px; 
-`
 
-const PosterFilm = styled.div`
-    position: absolute;
-    width: 129px;
-    height: 193px;
-    left: 38px;
-    top: 177px;
-    }`  
