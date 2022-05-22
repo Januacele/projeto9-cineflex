@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import styled from 'styled-components';
 import LoadingGif from './Assets/loading.gif';
@@ -24,13 +25,13 @@ export default function ListarFilmes() {
                 <ContainerFilmes>
                     {movies.map((movie, index) =>
                         <Catalogo key={index}>
-                           
-                            <img src={movie.posterURL} key={index} alt={'movie'} />
-                            
+                            <Link to={`/sessions/${movie.id}`}>
+                                <img src={movie.posterURL} key={index} alt={'movie'} />
+                            </Link>                       
                         </Catalogo>
                     )}
-                </ContainerFilmes>
-            </EscolherFilme>
+            </ContainerFilmes>
+            </EscolherFilme >
         );
 
     } else {

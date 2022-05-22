@@ -1,15 +1,10 @@
-import React from "react";
-// import ListarFilmes from "./ListarFilmes";
-import Footer from "./Footer";
+import TrocarRoutes from "./TrocarRoutes"
 
 export default function App() {
     return (
-        <>
-        {/* <ListarFilmes /> */}
-        <Footer />
-        </>
         
-        
+        <TrocarRoutes />
+     
     )
 
 }
