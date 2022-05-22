@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
@@ -16,7 +16,7 @@ export default function HorariosFilmes() {
     const [times, setTimes] = useState([]);
 
     useEffect(() => {
-        axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies/{movieID}/showtimes")
+        axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieID}/showtimes`)
 
             .then(({ data }) => {
                 setTimes(data.days)
@@ -34,9 +34,9 @@ export default function HorariosFilmes() {
             time.map(({ name, id }, index) =>
                 <Time key={index}>
                     <TimeBox>
-                        
+                    <Link style={{ textDecoration: 'none' }} state={name} to={`/seats/${id}`}>
                             <h1>{name}</h1>
-                        
+                    </Link>   
                     </TimeBox>
                 </Time>
             )
@@ -88,62 +88,57 @@ const Titulo = styled.div`
         align-items: center;
 
             h1{
-                font-family: 'Roboto';
+                font-family: 'Roboto', sans-serif;
                 font-style: normal;
                 font-weight: 400;
                 font-size: 24px;
                 line-height: 28px;
-                display: flex;
-                align-items: center;
-                text-align: center;
-                letter-spacing: 0.04em;
                 color: #293845;
             }
     `
 const ContainerConteudo = styled.div`
     width: 375px;
     max-width: 100%;
-    height: 90%;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+    padding-left: 20px;
+    
     `
 
 const Day = styled.div`
+    width: 375px;
+    `
+const Date = styled.div`
     width: 241px;
     height: 35px;
     left: 24px;
     top: 170px;
-    `
-const Date = styled.div`
+
             h1{
-                font-family: 'Roboto';
+                font-family: 'Roboto', sans-serif;
                 font-style: normal;
                 font-weight: 400;
                 font-size: 20px;
-                line-height: 23px;
-                display: flex;
-                align-items: center;
-                letter-spacing: 0.02em;
+                line-height: 23px;  
                 color: #293845;
             }
     `
 const Time = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: center;    
     `
 const TimeBox = styled.div`
-    width: 83px;
+    width: 82px;
     height: 43px;
-    left: 23px;
+    left: 24px;
     top: 227px;
-    background: #E8833A;
     border-radius: 3px;
+    background-color: #E8833A;
 
             h1{
-                font-family: 'Roboto';
+                font-family: 'Roboto', sans-serif;
                 font-style: normal;
                 font-weight: 400;
                 font-size: 18px;
@@ -151,7 +146,9 @@ const TimeBox = styled.div`
                 display: flex;
                 align-items: center;
                 text-align: center;
-                letter-spacing: 0.02em;
                 color: #FFFFFF;
+
+                :hover {
+                    cursor: pointer;
             }
     `

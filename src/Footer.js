@@ -7,25 +7,27 @@ export default function Footer({ img, title, weekday, date }) {
         <PageFooter>
             <FooterContainer>
                 <img src={img} alt="" />
+            </FooterContainer>
                 <MovieTitle>
                     <h1>{title}</h1>
                     <h1>{weekday}</h1>
                     <h1>{date}</h1>
-                </MovieTitle>
-            </FooterContainer>
+                </MovieTitle>          
         </PageFooter>
     )
 }
 
 const PageFooter = styled.div`
+    position: absolute;
     width: 375px;
     max-width: 100%;
     height: 117px;
     margin-right: 5px;
+    margin-top: 500px;
     background-color: #9EADBA;
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    padding-left: 15px;
     `
 
 const FooterContainer = styled.div`
@@ -49,20 +51,24 @@ const FooterContainer = styled.div`
     `
 
 const MovieTitle = styled.div`
-    width: 60 %;
-    height: 100 %;
+    width: 169px;
+    height: 40px;
     display: flex;
     flex - direction: column;
     justify - content: center;
     align - items: center;
-    padding - left: 5 %;
+    padding-left: 5px;
 
         h1{
-            font - family: 'Roboto';
-            font - weight: 400;
-            font - size: 18px;
-            line - height: 30px;
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 26px;
+            line-height: 30px;
+            display: flex;
+            align-items: center;
             color: #293845;
+
         }
     `
 
