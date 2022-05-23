@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import ListarFilmes from './ListarFilmes';
 import HorariosFilmes from './HorariosFilmes';
-import Assentos from './Assentos';
+import Assentos from './AssentosCine/Assentos';
 
 export default function TrocarRoutes() {
     return (
