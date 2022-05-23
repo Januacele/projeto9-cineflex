@@ -27,23 +27,23 @@ export default function HorariosFilmes() {
             })
     }, [movieID])
 
-    //Função auxiliar para renderizar os horários do filme, buscando na API 
+    //LOGICA - renderizar os horários do filme, buscando na API 
 
     function renderShowtimes(time) {
         return (
             time.map(({ name, id }, index) =>
                 <Time key={index}>
                     <TimeBox>
-                    <Link style={{ textDecoration: 'none' }} state={name} to={`/seats/${id}`}>
-                            <h1>{name}</h1>
-                    </Link>   
+                        <Link style={{ textDecoration: 'none' }} state={name} to={`/seats/${id}`}>
+                                <h1>{name}</h1>
+                        </Link>   
                     </TimeBox>
                 </Time>
             )
         )
     }
 
-    //Função auxiliar para renderizar os dias da semana e as datas, buscando na API 
+    //LOGICA - renderizar os dias da semana e as datas, buscando na API 
 
     function renderWeekDays(times) {
         return (
@@ -52,7 +52,9 @@ export default function HorariosFilmes() {
                     <Date>
                         <h1>{time.weekday} - {time.date}</h1>
                     </Date>
-                    {renderShowtimes(time.showtimes)}
+                    <DateTime>
+                        {renderShowtimes(time.showtimes)}
+                    </DateTime>                  
                 </Day>
             )
         )
@@ -99,7 +101,6 @@ const Titulo = styled.div`
 const ContainerConteudo = styled.div`
     width: 375px;
     max-width: 100%;
-    height: 100vh;
     display: flex;
     flex-wrap: wrap;
     padding-left: 20px;
@@ -110,10 +111,8 @@ const Day = styled.div`
     width: 375px;
     `
 const Date = styled.div`
-    width: 241px;
-    height: 35px;
+    width: 375px;
     left: 24px;
-    top: 170px;
 
             h1{
                 font-family: 'Roboto', sans-serif;
@@ -124,18 +123,24 @@ const Date = styled.div`
                 color: #293845;
             }
     `
-const Time = styled.div`
+const DateTime = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: center;    
+    align-items: center;
+    `
+const Time = styled.div`
+    width: 100px;
+    top: 170px;
+    
     `
 const TimeBox = styled.div`
     width: 82px;
     height: 43px;
-    left: 24px;
     top: 227px;
     border-radius: 3px;
     background-color: #E8833A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
             h1{
                 font-family: 'Roboto', sans-serif;

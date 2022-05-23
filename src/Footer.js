@@ -22,7 +22,7 @@ const PageFooter = styled.div`
     max-width: 100%;
     height: 117px;
     padding-left: 10px;
-    margin-top: 500px;
+    margin-top: 50px;
     background-color: #9EADBA;
     display: flex;
     align-items: center;

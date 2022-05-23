@@ -1,27 +1,30 @@
 import { useState } from 'react';
+// import axios from "axios";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import '../Assets/style.css'
 
 export default function DadosComprador({ movieinfo, seats, time }) {
 
-    const [inputs, setInputs] = useState({ nome: '', cpf: '', validate: false })
-
+    const [inputs, setInputs] = useState({ name: '', cpf: ''})
     const { title, posterURL: img } = movieinfo.movie
     const { weekday, date } = movieinfo.days
 
-    function handleSubmit(e) {
-
-        e.preventDefault()
-
-        if (inputs.nome.length < 10) { return alert('NOME Inválido') }
-        if (inputs.cpf.length < 11) { return alert('CPF Inválido') }
-        else {
-            if (seats.length < 1) { return alert('Nenhum assento selecionado') }
-            setInputs({ ...inputs, validate: true })
-        }
-    }
-
     let superdata = { ...inputs, title: title, img: img, weekday: weekday, date: date, seats: seats, time: time }
+
+
+    // const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",   
+    //     {
+    //         ids: seatInfo,
+    //         name: nome,
+    //         cpf: cpf
+    //     });
+    //     promise.then((response) => {
+    //         Navigate("/success", superdata);
+    //         console.log(response);
+
+    //     }) .catch(err => console.log(err));
+
 
     return (
         <DadosUsuario>
@@ -30,7 +33,7 @@ export default function DadosComprador({ movieinfo, seats, time }) {
                 <h1> Nome Comprador: </h1>
             </TituloInput>
 
-            <Form onSubmit={handleSubmit}>
+            <Form >
                 <input type="text" placeholder="Digite seu nome..." required
                     onChange={e => setInputs({ ...inputs, nome: e.target.value })} />
             </Form>
@@ -42,16 +45,20 @@ export default function DadosComprador({ movieinfo, seats, time }) {
             <Form>
                 <input type="text" placeholder="Digite seu CPF..." required
                     onChange={e => setInputs({ ...inputs, cpf: e.target.value })} />
+
+                <BotaoConfirmar>
+                    {inputs.validate ? 
+                        <Link style={{ textDecoration: 'none' }} state={superdata} to={`/success/`}>
+                            <h1> CONFIRMAR ? </h1>
+                        </Link> :
+                        <Link style={{ textDecoration: 'none' }} state={superdata} to={`/success/`}>
+                            <h1> Reservar assento(s) </h1>
+                        </Link>
+                    }
+                </BotaoConfirmar>
+
             </Form>
 
-                <Button>
-                {inputs.validate ?
-                    <Link style={{ textDecoration: 'none' }} state={superdata} to={`/success/`}>
-                        <button type="submit">CONFIRMAR ?</button>
-                    </Link> :
-                    <button type="submit">Reservar assento(s)</button>}
-                </Button>         
-            
         </DadosUsuario>
     )
 }
@@ -103,21 +110,30 @@ const Form = styled.div`
         }
     `
 
-const Button = styled.div`
+const BotaoConfirmar = styled.div`
     width: 225px;
     height: 42px;
     left: 72px;
     top: 688px;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
+    background: #E8833A;
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-left: 60px;
     display: flex;
     align-items: center;
     text-align: center;
+    justify-content: center;
+   
 
-    color: #FFFFFF;
-
+        h1{
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            cursor: pointer
+        }
 `

@@ -1,4 +1,4 @@
-import { useParams, Link, useLocation } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
@@ -129,8 +129,8 @@ const Selecionado = styled.div`
             color: #4E5A65;
 `
 const AssentoSelecionado = styled.div`
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     background: #8DD7CF;
     border: 1px solid #1AAE9E;
     box-sizing: border-box;
@@ -141,7 +141,6 @@ const AssentoSelecionado = styled.div`
             font-weight: 400;
             font-size: 13px;
             line-height: 15px;
-            letter-spacing: -0.013em;
             color: #4E5A65;
         }
 `
