@@ -1,12 +1,23 @@
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
 import ContainerHeader from './ContainerHeader';
-import RenderizarAssentos from './AssentosCine/RenderizarAssentos';
+import ButtonSuccess from './ButtonSuccess';
 
 export default function Sucesso() {
 
     let data = useLocation()
     const info = data.state
+
+    const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",   
+    {
+        id: info.seats,
+        name: info.nome,
+        cpf: info.cpf
+    });
+    promise.then(ButtonSuccess());
+    promise.catch(err => console.log(err));
+
 
     return (
         <Success>
@@ -22,28 +33,19 @@ export default function Sucesso() {
                 <h2>{info.date} - {info.time}</h2>
 
                 <h1>Ingressos</h1>
-                <RenderizarAssentos seats={info.seats} />
+                {info.seats.map((seat, index) => (<p key={index}> Assento {seat}</p>))}
 
                 <h1>Comprador</h1>
                 <h2>Nome: {info.nome}</h2>
                 <h2>CPF: {info.cpf}</h2>
 
-                <Link style={{ textDecoration: 'none' }} to="/">
-                    <BtnBack>
-                        <h1>Voltar pra Home</h1>
-                    </BtnBack>
-                </Link> 
+                <ButtonSuccess />
+                 
             </SuccessContainer>
         </Success>
     )
 }
 
-function RenderSeats({ seats }) {
-
-    return seats.map((seat, index) =>
-        <h1 key={index}>Assento {seat}</h1>
-    )
-}
 
 const Success = styled.div`
     width: 375px;
@@ -85,6 +87,15 @@ const SuccessContainer = styled.div`
             font-size: 24px;
             color: #293845;     
         }
+            p{
+                font-family: 'Roboto', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                display: flex;
+                align-items: center;
+                color: #293845;
+            }
 
         h2{
             font-family: 'Roboto', sans-serif;
@@ -94,27 +105,3 @@ const SuccessContainer = styled.div`
         }
 `
 
-const BtnBack = styled.div`
-    width: 225px;
-    height: 42px;
-    left: 74px;
-    top: 622px;
-    background: #E8833A;
-    border-radius: 3px;
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-        h1{
-            font-family: 'Roboto', sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: #FFFFFF;
-        }
-`

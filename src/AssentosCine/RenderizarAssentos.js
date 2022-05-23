@@ -13,7 +13,6 @@ export default function RendenderizarAssentos({ seats, setList, list }) {
     )
 }
 
-
  const Seat = styled.div`
 //     width: 26px;
 //     height: 26px;

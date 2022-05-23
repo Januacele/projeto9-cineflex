@@ -13,18 +13,6 @@ export default function DadosComprador({ movieinfo, seats, time }) {
     let superdata = { ...inputs, title: title, img: img, weekday: weekday, date: date, seats: seats, time: time }
 
 
-    // const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",   
-    //     {
-    //         ids: seatInfo,
-    //         name: nome,
-    //         cpf: cpf
-    //     });
-    //     promise.then((response) => {
-    //         Navigate("/success", superdata);
-    //         console.log(response);
-
-    //     }) .catch(err => console.log(err));
-
 
     return (
         <DadosUsuario>
