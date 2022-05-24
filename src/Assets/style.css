@@ -2,15 +2,21 @@
 
 * {
   box-sizing: border-box;
+  --cor-laranja: #e8833a;
+  --cor-azul: #247a6b;
+  --cor-preta: #293845;
+  --cor-fundo-tela: #e5e5e5;
 }
 
 body {
-  font-family: 'Roboto';
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--cor-fundo-tela);
+  color: var(--cor-preta);
 }
 
-/* seats colors */
-.green  { background-color: #8DD7CF }
-.gray   { background-color: #C3CFD9 }
-.yellow { background-color: #FBE192 }
-
+body::-webkit-scrollbar{
+  display: none;
+}
 

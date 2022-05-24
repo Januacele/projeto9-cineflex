@@ -2,8 +2,6 @@ import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
-
-import ContainerHeader from './ContainerHeader';
 import Footer from './Footer';
 
 
@@ -63,7 +61,6 @@ export default function HorariosFilmes() {
     //UI
     return (
         <ContainerHorarios>
-            <ContainerHeader />
             <Titulo><h1>Selecione o horário</h1></Titulo>
             <ContainerConteudo>
                 {renderWeekDays(times)}

@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
 
-import ContainerHeader from '../ContainerHeader'
-import Footer from '../Footer'
-import RendenderizarAssentos from './RenderizarAssentos'
-import DadosComprador from './DadosComprador'
+import ContainerHeader from './layouts/Header'
+import Footer from './Footer'
+import RendenderizarAssentos from './AssentosCine/RenderizarAssentos'
+import DadosComprador from './AssentosCine/DadosComprador'
 
 // LOGIC
-export default function EscolherAssentos() {
+export default function TelaAssentos() {
     
     const { sessionID } = useParams()
 

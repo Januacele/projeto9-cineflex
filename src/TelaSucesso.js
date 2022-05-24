@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
-import ContainerHeader from './ContainerHeader';
+import ContainerHeader from './layouts/Header';
 import ButtonSuccess from './ButtonSuccess';
 
 export default function Sucesso() {
